@@ -1,0 +1,9 @@
+.ck.ck-link-form {
+	& .ck-labeled-input {
+		display: inline-block;
+	}
+
+	& .ck-label {
+		display: none;
+	}
+}
