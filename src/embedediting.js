@@ -14,7 +14,7 @@ export default class EmbedEditing extends Plugin {
 	init() {
 		const editor = this.editor;
 
-		editor.model.schema.register( 'embed', { 
+		editor.model.schema.register( 'embed', {
 			isObject: true,
 			isBlock: true,
 			allowWhere: '$block',
@@ -24,7 +24,7 @@ export default class EmbedEditing extends Plugin {
 		editor.conversion.elementToElement( {
 			model: 'embed',
 			view: ( modelElement, viewWriter ) => {
-				return viewWriter.createEmptyElement( 'iframe', modelElement.getAttributes());
+				return viewWriter ? viewWriter.createEmptyElement( 'iframe', modelElement.getAttributes()):'';
 			}
 		} ) ;
 
