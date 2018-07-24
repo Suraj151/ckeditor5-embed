@@ -1,5 +1,5 @@
 {
-  "name": "@ckeditor/ckeditor5-embed",
+  "name": "ckeditor5-embed",
   "version": "1.0.0",
   "description": "embed link feature for CKEditor 5.",
   "keywords": [
@@ -41,5 +41,5 @@
     "lang",
     "src",
     "theme"
-  ],
+  ]
 }
