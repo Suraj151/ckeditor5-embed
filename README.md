@@ -92,7 +92,7 @@ import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-`import Embed from 'ckeditor5-embed/src/embed';`
+import Embed from 'ckeditor5-embed/src/embed';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
