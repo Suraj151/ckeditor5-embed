@@ -63,7 +63,11 @@ ClassicEditor
 
 **Including ckeditor5-embed with classic editor**
 
-now clone ckeditor5-embed repo directly in "./node_modules/@ckeditor/" folder
+now install embed package
+
+```bash
+npm install ckeditor5-embed
+```
 open "ckeditor5-build-classic/src/ckeditor.js" source file where you can see imported packages.
 now import ckeditor5-embed as shown in below example and build.
 
@@ -88,7 +92,7 @@ import ImageUpload from '@ckeditor/ckeditor5-image/src/imageupload';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 import List from '@ckeditor/ckeditor5-list/src/list';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import Embed from '@ckeditor/ckeditor5-embed/src/embed';
+`import Embed from 'ckeditor5-embed/src/embed';`
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -108,7 +112,7 @@ ClassicEditor.builtinPlugins = [
 	ImageToolbar,
 	ImageUpload,
 	Link,
-  Embed,
+  	Embed,
 	List,
 	Paragraph
 ];
@@ -125,7 +129,7 @@ ClassicEditor.defaultConfig = {
 			'bulletedList',
 			'numberedList',
 			'imageUpload',
-      'embed',
+      			'embed',
 			'blockQuote',
 			'undo',
 			'redo'
