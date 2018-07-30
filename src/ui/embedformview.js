@@ -165,7 +165,7 @@ export default class embedFormView extends View {
 		const labeledInput = new LabeledInputView( this.locale, InputTextView );
 
 		labeledInput.label = t( 'Embed Code' );
-		labeledInput.inputView.placeholder = 'Place ytube url/embed-code here.';
+		labeledInput.inputView.placeholder = 'Place url/embed-code here.';
 
 		return labeledInput;
 	}

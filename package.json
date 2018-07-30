@@ -38,7 +38,6 @@
     "url": "https://github.com/Suraj151/ckeditor5-embed.git"
   },
   "files": [
-    "lang",
     "src",
     "theme"
   ]

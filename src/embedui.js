@@ -13,7 +13,7 @@ import clickOutsideHandler from '@ckeditor/ckeditor5-ui/src/bindings/clickoutsid
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
 import EmbedFormView from './ui/embedformview';
 
-import yTubeIcon from '../theme/icons/youtube.svg';
+import mediaIcon from '../theme/icons/media.svg';
 
 const embedKeystroke = 'Ctrl+Shift+K';
 
@@ -105,7 +105,7 @@ export default class EmbedUI extends Plugin {
 
 			button.isEnabled = true;
 			button.label = t( 'Embed' );
-			button.icon = yTubeIcon;
+			button.icon = mediaIcon;
 			button.keystroke = embedKeystroke;
 			button.tooltip = true;
 

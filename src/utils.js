@@ -31,10 +31,18 @@ export function parseYtubeEmbed( src ) {
 	// console.log(src_element);
 
 	for (var i = 0; i < src_element.length; i++) {
-		if(src_element[i].includes("http") && !src_element[i].includes('src="http')){
+		if(src_element[i].includes("http") && !src_element[i].includes('src="http') && !src_element[i].includes('href="http') ){
+
 			let _urlSegment = linkParser(src_element[i]);
-			if(_urlSegment && _urlSegment[1]){
-			_src = 'https://www.youtube.com/embed/'+_urlSegment[1].replace(/watch\?v=/g,'');
+			let index = _urlSegment.length - 1;
+
+			if(_urlSegment && _urlSegment[index] && _urlSegment[0].includes('youtu')){
+
+				_src = 'https://www.youtube.com/embed/'+_urlSegment[index].replace(/watch\?v=/g,'');
+			}
+			if(_urlSegment && _urlSegment[index] && _urlSegment[0].includes('vimeo')){
+
+				_src = 'https://player.vimeo.com/video/'+_urlSegment[index];
 			}
 		}
 		if(src_element[i].includes("width")){
@@ -46,7 +54,7 @@ export function parseYtubeEmbed( src ) {
 		if(src_element[i].includes("frameborder")){
 			_frameborder = parseInt(src_element[i].replace(/frameborder|=|"/g,''));
 		}
-		if(src_element[i].includes("src")){
+		if(src_element[i].includes("src=")){
 			_src = src_element[i].replace(/src|=|"/g,'');
 		}
 	}
@@ -54,10 +62,10 @@ export function parseYtubeEmbed( src ) {
 	let elementObject = {
 		width : _width,
 		height : _height,
-		src : _src != '' ? _src:'https://www.youtube.com/embed/'+src, 
+		src : _src != '' ? _src:'https://www.youtube.com/embed/'+src,
 		frameborder : _frameborder,
 		allow : "autoplay; encrypted-media",
-		allowfullscreen : true 
+		allowfullscreen : true
 	};
 
 	// console.log(elementObject);
