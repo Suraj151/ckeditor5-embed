@@ -152,8 +152,12 @@ After build you can see media icon in your classic editor top bars.
 
 you can paste youtube, vimeo link/embed-code there to embed it in your editor doc.
 
-**more:** other than videos we can embed custom embed-cards,
-e.g. <iframe width="100%" height="180" src="http://www.electronicwings.com/embed/code-repo/F1V8s024g0v3s1F7P3M7H3R8g090C0" class="ew_embed_iframe" frameborder="0" allowfullscreen=""/>
+**more:** other than videos we can embed custom embed-cards too.
+
+for example,
+```bash
+<iframe width="100%" height="180" src="http://www.electronicwings.com/embed/code-repo/F1V8s024g0v3s1F7P3M7H3R8g090C0" class="ew_embed_iframe" frameborder="0" allowfullscreen=""/>
+```
 
 
 Help to imporove this as i am new to this platform.
