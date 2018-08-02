@@ -1,9 +1,9 @@
 # ckeditor5-embed
-Embed youtube link feature for CKEditor 5. https://ckeditor.com
+Embed youtube, vimeo videos links/embed-codes feature for CKEditor 5. https://ckeditor.com
 
-This package implements the embed link feature for CKEditor 5.
+This package implements the media embed link feature for CKEditor 5.
 
-In this package i tried to implement youtube embed link feature for CKEditor5 by refering CKEditor5 docs and their other packages.
+In this package i tried to implement embed link feature for CKEditor5 by refering CKEditor5 docs and their other packages.
 
 **Example**
 
@@ -148,9 +148,13 @@ ClassicEditor.defaultConfig = {
 };
 
 ```
-After build you can see youtube icon in your classic editor top bars.
+After build you can see media icon in your classic editor top bars.
 
-you can paste youtube link/embed code there to embed it in your editor doc.
+you can paste youtube, vimeo link/embed-code there to embed it in your editor doc.
+
+**more:** other than videos we can embed custom embed-cards,
+e.g. <iframe width="100%" height="180" src="http://www.electronicwings.com/embed/code-repo/F1V8s024g0v3s1F7P3M7H3R8g090C0" class="ew_embed_iframe" frameborder="0" allowfullscreen=""/>
+
 
 Help to imporove this as i am new to this platform.
 

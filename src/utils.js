@@ -46,10 +46,14 @@ export function parseYtubeEmbed( src ) {
 			}
 		}
 		if(src_element[i].includes("width")){
+			let inPercent = src_element[i].includes("%");
 			_width = parseInt(src_element[i].replace(/width|=|"/g,''));
+			_width = _width + ( inPercent ? '%' : '' );
 		}
 		if(src_element[i].includes("height")){
+			let inPercent = src_element[i].includes("%");
 			_height = parseInt(src_element[i].replace(/height|=|"/g,''));
+			_height = _height + ( inPercent ? '%' : '' );
 		}
 		if(src_element[i].includes("frameborder")){
 			_frameborder = parseInt(src_element[i].replace(/frameborder|=|"/g,''));
