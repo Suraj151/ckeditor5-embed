@@ -38,7 +38,7 @@ export function parseYtubeEmbed( src ) {
 
 			if(_urlSegment && _urlSegment[index] && _urlSegment[0].includes('youtu')){
 
-				_src = 'https://www.youtube.com/embed/'+_urlSegment[index].replace(/watch\?v=/g,'');
+				_src = 'https://www.youtube.com/embed/'+_urlSegment[index].replace(/watch\?v=/g,'').replace(/&list=/g,'?list=');
 			}
 			if(_urlSegment && _urlSegment[index] && _urlSegment[0].includes('vimeo')){
 
