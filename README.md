@@ -174,15 +174,14 @@ example
 		  getEmbedAttributes:( user_src )=>{
 		    console.log("user entered this in embed : ", user_src);
 
-		    .....your logic to parse user input....
+		    //.....your logic to parse user input....
+		    var _src = "https://somemedia.com/embed/xyz"	//parsed src attribute from user input
+		    //.....your logic to parse user input....
 		    
-		    // return the attribute object
+		    /* return attribute object. width(default=100%), height(default=100%), allowfullscreen(default=true) etc 
+	attributes kept as default for better result, you can change it if needed */
 		    return {
-				width : '100%',	//optional. default is 100%
-				height : '100%,	//optional. default is 100%
-				src : '', 	//this is must attribute as it is source of media
-				frameborder : 0, //optional. defailt 0
-				allowfullscreen : true	//optional. default is true
+				src : _src, 	//this is must attribute as it is source of media
 				//.....add more if any.
 			};
 		  }
