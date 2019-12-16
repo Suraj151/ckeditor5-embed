@@ -152,6 +152,51 @@ After build you can see media icon in your classic editor top bars.
 
 you can paste youtube, vimeo link/embed-code there to embed it in your editor doc.
 
+**Custom options**
+
+you can use custom attribute option to add more type of embed cards in your application. just add embed config in your application while initializing editor
+
+by default youtube and vimeo are only supported media to embed, with this option you can add more source of media using embed config callback setting. it will give you entered user link/embed-code in argument and you need to return the attribute object from user input that will fit to iframe
+
+example
+
+```html
+<div id="editor">
+	<p>This is the editor content.</p>
+</div>
+<script src="./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script>
+	ClassicEditor
+		.create( document.querySelector( '#editor' ),{
+		
+		embed:{
+		  allowAttributes:['frameborder', 'allow', ....add more if any ],
+		  getEmbedAttributes:( user_src )=>{
+		    console.log("user entered this in embed : ", user_src);
+
+		    .....your logic to parse user input....
+		    
+		    // return the attribute object
+		    return {
+				width : '100%',	//optional. default is 100%
+				height : '100%,	//optional. default is 100%
+				src : '', 	//this is must attribute as it is source of media
+				frameborder : 0, //optional. defailt 0
+				allowfullscreen : true	//optional. default is true
+				//.....add more if any.
+			};
+		  }
+		}
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+</script>
+```
+
 **more:** other than videos we can embed custom embed-cards too.
 
 for example,
