@@ -1,0 +1,21 @@
+{
+  "name": "ckeditor5-embed",
+  "version": "1.0.5",
+  "description": "embed link feature for CKEditor 5.",
+  "keywords": [
+    "ckeditor",
+    "ckeditor5",
+    "ckeditor 5",
+    "ckeditor5-feature"
+  ],
+  "author": "Suraj151",
+  "license": "GPL-2.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Suraj151/ckeditor5-embed.git"
+  },
+  "files": [
+    "src",
+    "theme"
+  ]
+}
