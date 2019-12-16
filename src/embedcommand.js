@@ -32,8 +32,9 @@ export default class EmbedCommand extends Command {
 		const selection = model.document.selection;
 		let attributesFromEmbed = parseMediaEmbed(embed_Link);
 		let embedAttributes = embed_options&&embed_options.getEmbedAttributes ?
-		Object.assign(embed_options.getEmbedAttributes(embed_Link)||{},attributesFromEmbed) : attributesFromEmbed;
+		Object.assign(attributesFromEmbed,embed_options.getEmbedAttributes(embed_Link)||{}) : attributesFromEmbed;
 		embedAttributes.src = ensureSafeUrl( embedAttributes.src );
+		embedAttributes = Object.assign(embedAttributes,{style: 'position:absolute;'});
 
 		model.change( writer => {
 
