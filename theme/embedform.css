@@ -7,3 +7,27 @@
 		display: none;
 	}
 }
+
+.embed {
+	clear: both;
+	margin: 1em 0;
+	display: block;
+	min-width: 15em;
+	padding-bottom:56%;
+	position:relative;
+}
+
+/* .embed_wrapper > *{
+	pointer-events: none;
+} */
+
+/* .embed.embed_wrapper.ck-widget.ck-widget_selected > *{
+	pointer-events: none;
+} */
+
+/* .ck-editor__top > .embed_wrapper > *{
+	pointer-events: none;
+} */
+.ck-editor__main > div .embed_wrapper > *{
+	pointer-events: none;
+}

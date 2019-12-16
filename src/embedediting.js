@@ -16,26 +16,25 @@ export default class EmbedEditing extends Plugin {
 		const editor = this.editor;
 		const embed_options = editor.config.get( 'embed' );
 		const t = editor.t;
-		let allowed_attributes = [ 'width', 'height', 'src', 'frameborder', 'allow', 'allowfullscreen' ];
+		let allowed_attributes = [ 'width', 'height', 'src', 'frameborder', 'allow', 'allowfullscreen', 'style' ];
 		allowed_attributes = embed_options&&Array.isArray(embed_options.allowAttributes)&&embed_options.allowAttributes.length?
 		allowed_attributes.concat(embed_options.allowAttributes.filter(item => allowed_attributes.indexOf(item) === -1)):allowed_attributes;
-
+		const enablePlayer = !!( embed_options ? embed_options.enablePlayerInEditor:false );
 
 		editor.model.schema.register( 'embed', {
 			isObject: true,
 			isBlock: true,
 			allowWhere: '$block',
-			allowIn: '$block',
 			allowAttributes: allowed_attributes
 		} );
 
-		editor.conversion.elementToElement( {
+		editor.conversion.for( 'downcast' ).elementToElement( {
 			model: 'embed',
 			view: ( modelElement, viewWriter ) => {
 				if( viewWriter ){
-					const figure = viewWriter.createContainerElement( 'figure', { class: 'media', style: 'padding-bottom:56%;position:relative;' } );
+					const figure = viewWriter.createContainerElement( 'figure', { class: (enablePlayer?'embed':'embed embed_wrapper') } );
 					const iframeElement = viewWriter.createEmptyElement( 'iframe', modelElement.getAttributes() );
-					const label = t( 'media widget' );
+					const label = t( 'embed widget' );
 					viewWriter.insert( viewWriter.createPositionAt( figure, 0 ), iframeElement );
 					return toWidget( figure, viewWriter, { label } );
 				}return '';

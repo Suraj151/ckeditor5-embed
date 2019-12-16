@@ -156,7 +156,9 @@ you can paste youtube, vimeo link/embed-code there to embed it in your editor do
 
 you can use custom attribute option to add more type of embed cards in your application. just add embed config in your application while initializing editor
 
-by default youtube and vimeo are only supported media to embed, with this option you can add more source of media using embed config callback setting. it will give you entered user link/embed-code in argument and you need to return the attribute object from user input that will fit to iframe
+by default youtube and vimeo are only supported media to embed, with this option you can add more source of media using embed config callback setting. it will give you entered user link/embed-code in argument and you need to return the attribute object from user input that will fit to iframe.
+
+enabling embed player button while editing in editor is allowded from embed config as shown in below example. by default this behaviour is prevented.
 
 example
 
@@ -168,7 +170,7 @@ example
 <script>
 	ClassicEditor
 		.create( document.querySelector( '#editor' ),{
-		
+
 		embed:{
 		  allowAttributes:['frameborder', 'allow', ....add more if any ],
 		  getEmbedAttributes:( user_src )=>{
@@ -177,14 +179,15 @@ example
 		    //.....your logic to parse user input....
 		    var _src = "https://somemedia.com/embed/xyz"	//parsed src attribute from user input
 		    //.....your logic to parse user input....
-		    
-		    /* return attribute object. width(default=100%), height(default=100%), allowfullscreen(default=true) etc 
+
+		    /* return attribute object. width(default=100%), height(default=100%), allowfullscreen(default=true) etc
 	attributes kept as default for better result, you can change it if needed */
 		    return {
 				src : _src, 	//this is must attribute as it is source of media
 				//.....add more if any.
-			};
-		  }
+				};
+		  },
+			enablePlayerInEditor:true	// to enable play video button in editor mode
 		}
 		} )
 		.then( editor => {
