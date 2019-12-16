@@ -7,28 +7,21 @@ const SAFE_URL = /^(?:(?:https?|ftps?|mailto):|[^a-z]|[a-z+.-]+(?:[^a-z+.:-]|$))
 
 
 /**
- * Returns a youtube video attributes based on a given source (url/embed code).
+ * Returns a media attributes based on a given source (url/embed code).
  * @param {string} source (url/embed code)
  * @returns {object} attributes.
  */
-export function parseYtubeEmbed( src ) {
-	let _ckeditorTopDivWidth = null;
-	let _ckeditorTopDiv = document.getElementsByClassName('ck-editor__top');
-
-	if(_ckeditorTopDiv && _ckeditorTopDiv[0] && _ckeditorTopDiv[0].clientWidth){
-		var clientWidth = parseInt(_ckeditorTopDiv[0].clientWidth);
-		_ckeditorTopDivWidth = clientWidth > 100 ? clientWidth - 30 : clientWidth;
-	}
-	var _width = _ckeditorTopDivWidth ? _ckeditorTopDivWidth:640;
-	var _height = parseInt(_width) * 0.5620;
+export function parseMediaEmbed( src ) {
+	// var _width = _ckeditorTopDivWidth ? _ckeditorTopDivWidth:640;
+	// var _height = parseInt(_width) * 0.5620;
+	var _width = '100%';
+	var _height = '100%';
 	var _frameborder = 0;
 	var _src = "";
 
 
 
 	var src_element = src ? src.split(" "):[];
-
-	// console.log(src_element);
 
 	for (var i = 0; i < src_element.length; i++) {
 		if(src_element[i].includes("http") && !src_element[i].includes('src="http') && !src_element[i].includes('href="http') ){
@@ -45,16 +38,16 @@ export function parseYtubeEmbed( src ) {
 				_src = 'https://player.vimeo.com/video/'+_urlSegment[index];
 			}
 		}
-		if(src_element[i].includes("width")){
-			let inPercent = src_element[i].includes("%");
-			_width = parseInt(src_element[i].replace(/width|=|"/g,''));
-			_width = _width + ( inPercent ? '%' : '' );
-		}
-		if(src_element[i].includes("height")){
-			let inPercent = src_element[i].includes("%");
-			_height = parseInt(src_element[i].replace(/height|=|"/g,''));
-			_height = _height + ( inPercent ? '%' : '' );
-		}
+		// if(src_element[i].includes("width")){
+		// 	let inPercent = src_element[i].includes("%");
+		// 	_width = parseInt(src_element[i].replace(/width|=|"/g,''));
+		// 	_width = _width + ( inPercent ? '%' : '' );
+		// }
+		// if(src_element[i].includes("height")){
+		// 	let inPercent = src_element[i].includes("%");
+		// 	_height = parseInt(src_element[i].replace(/height|=|"/g,''));
+		// 	_height = _height + ( inPercent ? '%' : '' );
+		// }
 		if(src_element[i].includes("frameborder")){
 			_frameborder = parseInt(src_element[i].replace(/frameborder|=|"/g,''));
 		}
@@ -63,18 +56,15 @@ export function parseYtubeEmbed( src ) {
 		}
 	}
 
-	let elementObject = {
+	return {
 		width : _width,
 		height : _height,
 		src : _src != '' ? _src:'https://www.youtube.com/embed/'+src,
 		frameborder : _frameborder,
 		allow : "autoplay; encrypted-media",
-		allowfullscreen : true
+		allowfullscreen : true,
+		style: 'position:absolute;'
 	};
-
-	// console.log(elementObject);
-
-	return elementObject;
 }
 
 
@@ -88,6 +78,17 @@ export function parseYtubeEmbed( src ) {
 export function ensureSafeUrl( url ) {
 	url = String( url );
 	return isSafeUrl( url ) ? url : '#';
+}
+
+/**
+ * Returns view element attributes.
+ */
+export function getViewElementAttributes( _viewElement ) {
+	let _attributes = {};
+	for (let item of _viewElement.getAttributes()) {
+		_attributes[item[0]] = item[1];
+	}
+	return _attributes;
 }
 
 // Checks whether the given URL is safe for the user (does not contain any malicious code).

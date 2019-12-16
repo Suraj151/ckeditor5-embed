@@ -3,7 +3,7 @@
  */
 
 import Command from '@ckeditor/ckeditor5-core/src/command';
-import {parseYtubeEmbed, ensureSafeUrl} from './utils';
+import {parseMediaEmbed, ensureSafeUrl} from './utils';
 
 /**
  * The embed command.
@@ -27,8 +27,12 @@ export default class EmbedCommand extends Command {
 	 */
 	execute( embed_Link ) {
 		const model = this.editor.model;
+		const embed_options = this.editor.config.get( 'embed' );
+
 		const selection = model.document.selection;
-		let embedAttributes = parseYtubeEmbed(embed_Link);
+		let attributesFromEmbed = parseMediaEmbed(embed_Link);
+		let embedAttributes = embed_options&&embed_options.getEmbedAttributes ?
+		Object.assign(embed_options.getEmbedAttributes(embed_Link)||{},attributesFromEmbed) : attributesFromEmbed;
 		embedAttributes.src = ensureSafeUrl( embedAttributes.src );
 
 		model.change( writer => {
